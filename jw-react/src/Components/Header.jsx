@@ -1,28 +1,43 @@
-import {NavLink} from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+
+    const handleScroll = () => {
+        if (window.scrollY > 0) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [])
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Navbar</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={'/'}>Home</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={'/prodotti'}>Prodotti</NavLink>
-                            </li>
-                           
-                        </ul>
-                      
+            <header>
+                <div className={`nav-bar d-flex justify-content-between align-items-center p-3 ${isScrolled ? 'nav-bar-scrolled' : 'nav-bar-noScrolled'}`}>
+                    <div className={`${isScrolled ? 'left-col-scrolled' : 'left-col-noScrolled'} d-flex gap-2`}>
+                      <NavLink to={'/'}  >Home</NavLink>
+                        <NavLink to={'/collections'}>Collections</NavLink>
+                        <NavLink to={'/shop'}>Shop</NavLink>
+                    </div>
+                    <div className={`brand-col ${isScrolled ? 'brand-col-scrolled' : 'brand-col-noScrolled'}`}>JW <span>
+                        <img src="img/jw_logo.png" alt="" />
+                        </span> LUX</div>
+                    <div className={`${isScrolled ? 'left-col-scrolled' : 'left-col-noScrolled'} d-flex gap-2`}>
+                        <Link to={'/cart'}>Cart</Link>
+                        <a href="">Search</a>
                     </div>
                 </div>
-            </nav>
+            </header>
         </>
     )
 }

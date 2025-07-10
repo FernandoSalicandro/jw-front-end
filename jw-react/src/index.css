@@ -1,0 +1,97 @@
+.nav-bar {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.nav-bar-scrolled {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom : 1px solid rgba(52, 52, 52, 0.468);
+    z-index: 3;
+    transition: all 0.5s ease-in-out;
+}
+
+.nav-bar-noScrolled {
+    background-color: transparent;
+    position : fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom : 1px solid white;
+    z-index: 3;
+}
+
+.nav-bar a {
+    color : white;
+    text-decoration: none;
+    font-size: 1.5rem;
+
+}
+
+.left-col-scrolled, .right-col-scrolled {
+    
+    width: 20%;
+
+    a {
+        color: black;
+    }
+}
+.left-col-noScrolled, .right-col-noScrolled {
+    color: white;
+    width: 20%;
+}
+
+
+ .brand-col-noScrolled {
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+    width: 60%;
+}
+
+
+.brand-col-scrolled {
+    color: black;
+    
+    text-align: center;
+    font-size: 3rem;
+    width: 60%;
+}
+
+.brand-col {
+    letter-spacing: 0.5rem;
+}
+
+.brand-col img {
+    width: 100px;
+    aspect-ratio: 1;
+}
+
+.hero-img {
+    height: 100vh;
+    width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .hero-img {
+        height: 50vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hero-img {
+        height: 40vh;
+    }
+}
+
+.home-carousel {
+    
+    margin-bottom: 50px;
+} 
